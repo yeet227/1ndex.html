@@ -1,60 +1,21 @@
-<html>
-<head></head>
-<body>
-<ul>
-<?php
-class ftp{
-    public $conn;
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p>
+</div>
 
-    public function __construct($url){
-        $this->conn = ftp_connect($url);
-    }
-   
-    public function __call($func,$a){
-        if(strstr($func,'ftp_') !== false && function_exists($func)){
-            array_unshift($a,$this->conn);
-            return call_user_func_array($func,$a);
-        }else{
-            // replace with your own error handler.
-            die("$func is not a valid FTP function");
-        }
-    }
-}
-
-// Example
-$ftp = new ftp('ftp.example.com');
-$ftp->ftp_login('username','password');
-var_dump($ftp->ftp_nlist());
-?>
-up
-down
-4asifkhandk at gmail dot com ¶6 years ago
-Upload file to server via ftp.
-
-<?php
-$ftp_server="";
-$ftp_user_name="";
-$ftp_user_pass="";
-$file = "";//tobe uploaded
-$remote_file = "";
-
-// set up basic connection
-$conn_id = ftp_connect($ftp_server);
-
-// login with username and password
-$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
-
-// upload a file
-if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
-    echo "successfully uploaded $file\n";
-    exit;
-} else {
-    echo "There was a problem while uploading $file\n";
-    exit;
-    }
-// close the connection
-ftp_close($conn_id);
-?>
-</ul>
-</body>
-</html>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+</div>
